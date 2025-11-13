@@ -1,0 +1,273 @@
+/* ==========================================
+   VibeMotion Studio — Final Complete Styling
+   Covers: Home, Trainers, Schedule, Register, Contact
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ======= Color Variables ======= */
+:root {
+  --primary: #0d6efd;
+  --accent: #ff7a00;
+  --dark: #1b1b1b;
+  --light: #f8f9fa;
+  --gradient: linear-gradient(135deg, #ff9f4a, #ff7a00);
+}
+
+/* ======= General Body ======= */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+/* ======= Navbar ======= */
+.navbar {
+  background: var(--gradient);
+  padding: 0.8rem 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.navbar-brand, .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+}
+.navbar-brand:hover, .nav-link:hover {
+  color: #ffe9cc !important;
+  transition: 0.3s ease;
+}
+.navbar-toggler {
+  border-color: #fff;
+}
+
+/* ======= Logo Circle ======= */
+.logo-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* ======= Hero Section ======= */
+.hero {
+  background: var(--gradient);
+  color: white;
+  padding: 5rem 0;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+.hero img {
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+}
+.hero .btn-warning {
+  font-weight: 600;
+  border-radius: 30px;
+}
+
+/* ======= Section Headings ======= */
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+h2 {
+  color: var(--primary);
+}
+
+/* ======= Cards (Trainers & Programs) ======= */
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  background: #fff;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.card-title {
+  color: var(--accent);
+  font-weight: 600;
+}
+.card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 230px;
+  object-fit: cover;
+}
+
+/* ======= Buttons ======= */
+.btn-primary {
+  background-color: var(--accent);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background-color: #ff9133;
+  box-shadow: 0 4px 10px rgba(255,122,0,0.3);
+}
+.btn-warning {
+  background-color: #ffd43b;
+  color: #000;
+  border: none;
+}
+.btn-warning:hover {
+  background-color: #ffc107;
+}
+
+/* ======= Tables (Schedule Page) ======= */
+table {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.table th {
+  background-color: var(--primary);
+  color: white;
+}
+.table-striped tbody tr:hover {
+  background-color: rgba(255,122,0,0.05);
+}
+.table td, .table th {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.9rem;
+}
+
+/* ======= Class & Coach Box ======= */
+.class-name {
+  display: block;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 1.05rem;
+  margin-bottom: 5px;
+}
+.coach-box {
+  display: inline-block;
+  background: #fff1e6;
+  color: #b45309;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid #ffd9b3;
+  box-shadow: 0 2px 6px rgba(255,122,0,0.15);
+  transition: 0.3s ease;
+}
+.coach-box:hover {
+  background: #ffe0c2;
+  color: #8a3700;
+  transform: scale(1.05);
+}
+
+/* ======= Forms (Register Page) ======= */
+form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  margin-top: 1rem;
+}
+.form-label {
+  font-weight: 500;
+  color: var(--dark);
+}
+input, select, textarea {
+  border-radius: 10px !important;
+  border: 1px solid #ced4da;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.25rem rgba(255,122,0,0.25);
+}
+.invalid-feedback {
+  font-size: 0.85rem;
+}
+
+/* ======= Contact Page ======= */
+iframe {
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.contact-box {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+.contact-box h5 {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ======= Footer ======= */
+footer {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 1.8rem 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.4px;
+  border-top: 4px solid var(--accent);
+}
+footer a {
+  color: #ffc107;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #ff7a00;
+  text-decoration: underline;
+}
+
+/* ======= Animations ======= */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.hero, .card, form, table, iframe {
+  animation: fadeInUp 0.8s ease both;
+}
+
+/* ======= Scrollbar ======= */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff8b1e;
+}
+
+/* ======= Responsive Design ======= */
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    padding-top: 4rem;
+  }
+  .hero img {
+    margin-top: 2rem;
+  }
+  .navbar-brand span {
+    font-size: 1rem;
+  }
+}

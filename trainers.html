@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>fitness Studio — Trainers</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #ff9a00, #ff6a00, #ff0080);
+      --secondary-gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+      --dark-gradient: linear-gradient(135deg, #2c3e50, #34495e);
+      --light-gradient: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      --yoga-gradient: linear-gradient(135deg, #56ccf2, #2f80ed);
+      --zumba-gradient: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+      --strength-gradient: linear-gradient(135deg, #ff9a00, #ff6a00);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-gradient);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background: var(--dark-gradient) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1s ease;
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ff9a00 !important;
+    }
+
+    .nav-link.active {
+      color: #ff9a00 !important;
+      font-weight: 600;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: var(--primary-gradient);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--primary-gradient);
+      padding: 4rem 0;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      animation: gradientShift 10s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,261.3C672,256,768,224,864,197.3C960,171,1056,149,1152,165.3C1248,181,1344,235,1392,261.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: bottom;
+      animation: wave 15s linear infinite;
+    }
+
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-30px); }
+      100% { transform: translateX(0); }
+    }
+
+    .hero h1 {
+      animation: fadeInUp 1s ease 0.2s both;
+      font-weight: 700;
+    }
+
+    .hero p {
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    /* Trainer Cards */
+    main {
+      padding: 4rem 0;
+    }
+
+    .trainer-card {
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      background: white;
+      animation: fadeInUp 0.8s ease both;
+    }
+
+    .trainer-card:nth-child(1) { animation-delay: 0.6s; }
+    .trainer-card:nth-child(2) { animation-delay: 0.8s; }
+    .trainer-card:nth-child(3) { animation-delay: 1s; }
+
+    .trainer-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .trainer-img {
+      height: 280px;
+      object-fit: cover;
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trainer-card:hover .trainer-img {
+      transform: scale(1.05);
+    }
+
+    .trainer-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+    }
+
+    .card-body {
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-text {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Trainer Specialization Badges */
+    .specialization {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .yoga-specialization {
+      background: var(--yoga-gradient);
+      color: white;
+    }
+
+    .zumba-specialization {
+      background: var(--zumba-gradient);
+      color: white;
+    }
+
+    .strength-specialization {
+      background: var(--strength-gradient);
+      color: white;
+    }
+
+    /* View Profile Button */
+    .btn-light-outline {
+      border: 2px solid #e9ecef;
+      background: transparent;
+      color: #6c757d;
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-light-outline:hover {
+      border-color: #ff9a00;
+      color: #ff9a00;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 154, 0, 0.2);
+    }
+
+    /* Modals */
+    .modal-content {
+      border-radius: 20px;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-header {
+      background: var(--primary-gradient);
+      color: white;
+      border-bottom: none;
+      padding: 1.5rem;
+    }
+
+    .modal-title {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .modal-body {
+      padding: 2rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-gradient);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Floating Elements */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .floating-element {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+      }
+      50% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0.7;
+      }
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 3rem auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      animation: fadeInUp 1s ease 1.2s both;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: #6c757d;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+       VibeMotion Studio
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="trainers.html">Trainers</a></li>
+          <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero text-center">
+    <div class="floating-elements" id="floatingElements"></div>
+    <div class="container position-relative">
+      <h1 class="fw-bold">Meet Our Trainers</h1>
+      <p class="lead">Our certified professionals will guide you through every step of your fitness journey.</p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container py-5">
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <div class="row text-center">
+        <div class="col-md-4 stat-item">
+          <span class="stat-number">20</span>
+          <span class="stat-label">Years Combined Experience</span>
+        </div>
+        <div class="col-md-4 stat-item">
+          <span class="stat-number">600+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+        <div class="col-md-4 stat-item">
+          <span class="stat-number">18</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainer Cards -->
+    <div class="row g-4">
+      <!-- Coach Ryan Blake - Strength Training -->
+      <div class="col-md-4">
+        <div class="card trainer-card">
+         <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3RyZW5ndGglMjB0cmFpbmluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top trainer-img" alt="Coach Ryan Blake">
+          <div class="card-body">
+            <span class="specialization strength-specialization">Strength Training</span>
+            <h5 class="card-title">Coach Ryan Blake</h5>
+            <p class="card-text text-muted small">Strength & Conditioning Specialist with 9 years experience • Certified CSCS</p>
+            <button class="btn btn-light-outline" data-bs-toggle="modal" data-bs-target="#modal1">View profile</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coach Aisha Tan - Zumba & Cardio -->
+      <div class="col-md-4">
+        <div class="card trainer-card">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8emFtYmElMjB0cmFpbmVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" class="card-img-top trainer-img" alt="Coach Aisha Tan">
+          <div class="card-body">
+            <span class="specialization zumba-specialization">Zumba & Cardio</span>
+            <h5 class="card-title">Coach Aisha Tan</h5>
+            <p class="card-text text-muted small">Zumba & Group Fitness Instructor with 5 years experience • Energetic & Motivational</p>
+            <button class="btn btn-light-outline" data-bs-toggle="modal" data-bs-target="#modal2">View profile</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coach Maya Patel - Yoga & Mobility -->
+      <div class="col-md-4">
+        <div class="card trainer-card">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eW9nYSUyMHRyYWluZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top trainer-img" alt="Coach Maya Patel">
+          <div class="card-body">
+            <span class="specialization yoga-specialization">Yoga & Mobility</span>
+            <h5 class="card-title">Coach Maya Patel</h5>
+            <p class="card-text text-muted small">Yoga & Mobility Specialist with 7 years experience • Certified RYT-500</p>
+            <button class="btn btn-light-outline" data-bs-toggle="modal" data-bs-target="#modal3">View profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainer Modals -->
+    <!-- Coach Ryan Blake Modal -->
+    <div class="modal fade" id="modal1" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Coach Ryan Blake - Strength & Conditioning Specialist</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Ryan brings 9 years of experience in strength and conditioning, helping clients build functional strength and achieve their fitness goals. As a Certified Strength and Conditioning Specialist (CSCS), he focuses on proper form, progressive overload, and sustainable training methods.</p>
+            <p><strong>Specialties:</strong> Strength Training, Powerlifting, Functional Fitness, Body Transformation</p>
+            <p><strong>Certifications:</strong> CSCS, NASM-CPT, FMS Level 1</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coach Aisha Tan Modal -->
+    <div class="modal fade" id="modal2" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Coach Aisha Tan - Zumba & Group Fitness Instructor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Aisha brings infectious energy and 5 years of experience to her Zumba and cardio classes. Her background in dance and fitness allows her to create fun, engaging workouts that feel more like parties than exercise. She specializes in making fitness accessible and enjoyable for all levels.</p>
+            <p><strong>Specialties:</strong> Zumba, Dance Fitness, HIIT Cardio, Group Training</p>
+            <p><strong>Certifications:</strong> Zumba Instructor, ACE Group Fitness, CPR/AED</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coach Maya Patel Modal -->
+    <div class="modal fade" id="modal3" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Coach Maya Patel - Yoga & Mobility Specialist</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>With 7 years of teaching experience and RYT-500 certification, Maya specializes in creating personalized yoga flows that improve flexibility, mobility, and mental clarity. Her approach combines traditional yoga principles with modern mobility techniques to help students achieve balance in both body and mind.</p>
+            <p><strong>Specialties:</strong> Vinyasa Flow, Restorative Yoga, Mobility Training, Mindfulness</p>
+            <p><strong>Certifications:</strong> RYT-500, Yoga Medicine, Functional Range Conditioning</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-muted mt-5 small">Trainer photos are from Unsplash (royalty-free).</p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      © <span id="year">2023</span> FitZone Studio | Designed for PBA Assignment
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Create floating elements
+    const floatingElements = document.getElementById('floatingElements');
+    const colors = ['#ff9a9e', '#fad0c4', '#a1c4fd', '#c2e9fb', '#ffecd2'];
+    
+    for (let i = 0; i < 12; i++) {
+      const element = document.createElement('div');
+      element.classList.add('floating-element');
+      
+      const size = Math.random() * 80 + 20;
+      element.style.width = `${size}px`;
+      element.style.height = `${size}px`;
+      element.style.left = `${Math.random() * 100}%`;
+      element.style.top = `${Math.random() * 100}%`;
+      element.style.background = colors[Math.floor(Math.random() * colors.length)];
+      element.style.animationDuration = `${Math.random() * 20 + 10}s`;
+      element.style.animationDelay = `${Math.random() * 5}s`;
+      
+      floatingElements.appendChild(element);
+    }
+
+    // Update year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
